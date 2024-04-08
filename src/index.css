@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.awssld__content {
+    background-color: #E7E7E7 !important;
+}
+
+:root {
+    background-color: white;
+}
