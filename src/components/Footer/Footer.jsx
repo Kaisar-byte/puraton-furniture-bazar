@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <div className="py-10 bg-gray-100">
       <div className="flex flex-col justify-center items-center gap-2 py-4">
-        <h2 className="text-3xl font-semibold ">Puraton Furniture Bazar</h2>
-        <p>copywrite@Puraton Furniture Bazar</p>
+        <h2 className="text-xl md:text-3xl font-semibold ">Puraton Furniture Bazar</h2>
+        <p className="text-sm md:text-lg">copywrite@Puraton Furniture Bazar</p>
       </div>
       <div className="flex flex-col justify-center items-center w-full border-opacity-50">
 
@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
 
       </div>
-      <div className="flex justify-center items-center gap-6 py-6">
+      <div className="flex flex-wrap justify-center items-center gap-6 py-6">
         <Link>Legal Staff</Link>
         <Link>Privacy Policy</Link>
         <Link>Security</Link>

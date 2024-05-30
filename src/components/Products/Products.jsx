@@ -58,18 +58,13 @@ const Products = () => {
 
     ]
     return (
-        <div>
-            <div className="w-[600px] mx-auto text-center space-y-7">
-                <h2 className="text-4xl font-semibold">Our Products</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis similique placeat ipsam accusamus adipisci architecto veritatis laudantium voluptatum, sint tenetur sequi sed ipsa labore dicta provident vero. A, dolorum illum!</p>
+        <div className="mt-20">
+            <div className="w-full md:w-[600px] mx-auto text-center space-y-7">
+                <h2 className="text-xl md:text-4xl font-semibold">Our Products</h2>
+                <p className="text-sm md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis similique placeat ipsam accusamus adipisci architecto veritatis laudantium voluptatum, sint tenetur sequi sed ipsa labore dicta provident vero. A, dolorum illum!</p>
+
             </div>
-            <nav className="flex justify-center items-center gap-4">
-                <NavLink>New Arrivals</NavLink>
-                <NavLink>Features</NavLink>
-                <NavLink>On Sale</NavLink>
-                <NavLink>Trending</NavLink>
-            </nav>
-            <div className="flex justify-center items-center gap-6 mx-20 py-20">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 mx-20 py-10 ">
                 {
                     products.map((product, i) => <Product key={i} product={product} />)
                 }

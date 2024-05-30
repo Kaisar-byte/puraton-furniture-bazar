@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider"
+import { TiTick } from "react-icons/ti";
 
 
 
@@ -8,8 +9,8 @@ const SubCategory = ({ category }) => {
     const { user } = useContext(AuthContext)
     const { imgPath, productName, location, originalPrice, resalePrice, yrsOfUsed, sellerName, postedOn } = category
     return (
-        <div>
-            <img src={imgPath} alt="" />
+        <div className="">
+            <img src={imgPath} className="" alt="" />
             <div className="flex justify-between py-4">
                 <h2 className="text-xl font-semibold">{productName}</h2>
                 <div className="flex gap-1">
@@ -17,67 +18,50 @@ const SubCategory = ({ category }) => {
                     <h3 className="line-through text-sm">({originalPrice})</h3>
                 </div>
             </div>
-            <p className="">{yrsOfUsed} used</p>
+            <p>{yrsOfUsed} used</p>
             <div className="flex gap-4">
-                <p>Seller:</p>
                 <h4>{sellerName}</h4>
                 <p className="bg-blue-400 px-2 py-1 text-xs rounded-full text-white">X</p>
             </div>
             <div className="flex justify-end pr-4">
                 <button type="btn" className="py-1 px-3 bg-sky-500 text-white rounded-lg" onClick={() => {
                     setShowModal(true)
-                    console.log("Kam no goorer")
+
                 }}>Book Now</button>
             </div>
             {
                 showModal ? <>
-                    {
-                        console.log("its not working")
-                    }
                     <div
-                        className="flex justify-center items-center  fixed inset-0 z-50  "
+                        className="flex justify-center items-center  fixed inset-0 z-50 "
                     >
-                        <div className="relative w-[40%] border-2 border-red-400 rounded-lg">
+                        <div className="relative border border-gray-50  rounded-lg w-[40%] md:w-[30%] lg:w-[25%]">
                             {/*content*/}
-                            <div className="rounded-lg shadow-lg relative flex flex-col w-full bg-white">
+                            <div className="rounded-lg shadow-lg relative flex justify-center items-center flex-col w-full h-[80%] bg-white">
                                 {/*header*/}
-                                <div className="p-4">
-                                    <img src={imgPath} className="w-full h-[200px] rounded-lg" alt="" />
-                                    <div className="flex justify-between items-center">
-                                        <h2 className="text-center text-2xl text-green-500 read-only" >{productName}</h2>
-                                        <span>{resalePrice}</span>
+                                <div>
+                                    <img src={imgPath} className="w-full h-[30%]   " alt="" />
+                                    <div className="flex  justify-between items-center py-3">
+                                        <h2 className="text-center text-sm md:text-xl lg:text-xl text-green-500 read-only">{productName}</h2>
+                                        <p className="text-xs md:text-lg lg:text-xl text-blue-500">{resalePrice}</p>
                                     </div>
-                                    <button
-                                        className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                                            ×
-                                        </span>
-                                    </button>
+                                    <div>
+                                        <div className="flex justify-start items-center gap-2">
+                                            <h2 className="text-lg text-blue-400">user name</h2>
+                                            <span><TiTick className="text-white bg-blue-500 rounded-full" />
+                                            </span>
+                                        </div>
+                                        <h3 className="text-sm">{user.email}</h3>
+                                        <h4 className="text-sm">018411001100</h4>
+                                        <h3 className="text-md text-orange-400">Savar, Dhaka</h3>
+                                    </div>
+
+
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto">
-                                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                                        {user.email}
-                                    </p>
-                                </div>
+
                                 {/*footer*/}
-                                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                                    <button
-                                        className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        Close
-                                    </button>
-                                    <button
-                                        className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                        type="button"
-                                        onClick={() => setShowModal(false)}
-                                    >
-                                        Save Changes
-                                    </button>
+                                <div>
+                                    <input type="button" className="py-1 my-6 rounded-sm  text-white w-[60px] bg-gray-400" value="Submit" onClick={() => setShowModal(false)} />
                                 </div>
                             </div>
                         </div>

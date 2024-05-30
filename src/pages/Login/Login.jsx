@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
-    const { Login, googleSignIn, setLoading } = useContext(AuthContext)
     const [error, setError] = useState(false)
+    const { Login, googleSignIn, setLoading } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
@@ -21,9 +21,8 @@ const Login = () => {
         Login(email, password)
             .then((result) => {
                 const user = result.user;
-
-                if (user) {
-                    setLoading(false)
+                setLoading(false)
+                if (user?.uid) {
                     navigate(from, { replace: true })
                     console.log(user)
                 }
@@ -39,6 +38,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
+                setLoading(false)
                 console.log(user)
                 navigate(from, { replace: true })
             })
@@ -48,14 +48,14 @@ const Login = () => {
             })
     }
     return (
-        <div>
-            <div>
-                <div className=" flex justify-center items-center w-full h-screen p-8">
-                    <form onSubmit={handleSubmit}>
-                        <h2 className="text-black text-3xl py-10 text-center font-bold">Login</h2>
-                        <div className="border px-12 py-16 flex flex-col space-y-6 w-[500px]">
-                            <input type="text" className="h-14 text-lg pl-4 border bg-white w-full" name="email" placeholder="user/email" />
-                            <input type="password" className="h-14 text-lg pl-4 border bg-white w-full" name="password" placeholder="password" />
+        <div className="">
+            <div className=" flex justify-center items-center p-6  ">
+                <div className="m-8  ">
+                    <form onSubmit={handleSubmit} className="bg-gray-200/85">
+                        <h2 className="text-black text-3xl py-6 text-center font-bold">Login</h2>
+                        <div className=" px-8 py-8  flex flex-col space-y-4 w-[350px]">
+                            <input type="text" className="h-10 text-md pl-4 border bg-white w-full" name="email" placeholder="User Name/email" />
+                            <input type="password" className="h-10 text-md pl-4 border bg-white w-full" name="password" placeholder="Password" />
                             <div className="flex justify-between">
                                 <div>
                                     <input type="checkbox" name="remember" />

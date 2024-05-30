@@ -22,13 +22,13 @@ const Services = () => {
     ]
     return (
         <div className="py-10 shadow-sm">
-            <div className="flex justify-center items-center gap-10">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-10">
                 {
-                    services.map((service, i) => (<div className="flex flex-col justify-center items-center  px-16 space-y-2 py-10 rounded-md" key={i}>
+                    services.map((service, i) => (<div className="flex flex-col justify-center items-center  px-10 space-y-2 py-10 rounded-md" key={i}>
 
-                        <span className="text-5xl  rounded-full ">{service.icon}</span>
-                        <h2 className="text-2xl font-semibold">{service.label}</h2>
-                        <p className="text-lg">{service.label2}</p>
+                        <span className="text-2xl md:text-5xl  rounded-full ">{service.icon}</span>
+                        <h2 className="text-lg md:text-xl font-semibold">{service.label}</h2>
+                        <p className="text-sm md:text-lg">{service.label2}</p>
                     </div>))
                 }
             </div>

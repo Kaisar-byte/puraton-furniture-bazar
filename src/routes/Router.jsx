@@ -6,24 +6,20 @@ import Register from "../pages/Register/Register";
 import SubCategories from "../components/Categories/SubCategories";
 import PrivateRoute from "./PrivateRoute";
 import Contact from "../pages/Contact/Contact";
+import AddProduct from "../components/AddProduct/AddProduct";
+import Blogs from "../pages/Blogs/Blogs";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
                 element: <Home />
-            },
-            {
-                path: "/login",
-                element: <Login />
-            },
-            {
-                path: "/register",
-                element: <Register />
             },
             {
                 path: "/categories/:id",
@@ -34,8 +30,25 @@ const router = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact />
+            },
+            {
+                path: "/blogs",
+                element: <Blogs />
             }
+
         ]
+    },
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/register",
+        element: <Register />
+    },
+    {
+        path: "/addproduct",
+        element: <AddProduct />
     }
 ])
 

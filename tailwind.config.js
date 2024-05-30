@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [], content: [
+  content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  // eslint-disable-next-line no-undef
+  plugins: [require('@sira-ui/tailwind')]
 }
+
+
 
