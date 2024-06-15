@@ -1,5 +1,4 @@
 
-
 import { FaKitchenSet } from "react-icons/fa6";
 import { ImDrawer, ImOffice } from "react-icons/im";
 import { LiaBedSolid } from "react-icons/lia";
@@ -8,39 +7,47 @@ import { MdOutlineTableRestaurant } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 
+
 const Categories = () => {
-    const categories = [
-        {
-            name: "Bedroom", icon: <LiaBedSolid />
-        },
-        {
-            name: "Drawing", icon: <ImDrawer />
 
+    const furnitureByCategories = [
+        {
+            name: "Bedroom",
+            icon: <LiaBedSolid />,
         },
         {
-            name: "Kitchen", icon: <FaKitchenSet />
+            name: "Drawing",
+            icon: <ImDrawer />,
         },
         {
-            name: "Office", icon: <ImOffice />
+            name: "Kitchen",
+            icon: <FaKitchenSet />,
         },
         {
-            name: "Reading", icon: <MdOutlineTableRestaurant />
-
+            name: "Office",
+            icon: <ImOffice />,
+        },
+        {
+            name: "Reading",
+            icon: <MdOutlineTableRestaurant />,
         },
     ]
+
     return (
+
         <div className="mx-10">
             <div className="flex flex-wrap justify-center items-center gap-6">
                 {
-                    categories.map((category, i) => (<Link key={i} to="/categories/:id"> <div className='py-10'>
-                        <div className='w-[150px] h-[120px] rounded-xl p-2  hover:rotate-360 hover:transition-all hover:border-red-500 hover:text-white  hover:animate-pulse hover:duration-300 hover:ease-in '>
+                    furnitureByCategories.map((category, i) => (<Link key={i} to={`/categories/${category.name}`}>
+                        <div className='py-10'>
+                            <div className='w-[150px] h-[120px] rounded-xl p-2 hover:text-white'>
 
-                            <div className='flex flex-col justify-center items-center  bg-gray-300 p-10 hover:bg-blue-500'>
-                                <span className='text-3xl hover:text-blue-400'>{category.icon}</span>
-                                <p className='text-xl text-center text-gray-800'>{category.name}</p>
+                                <div className='flex flex-col justify-center items-center bg-gray-300 p-10 hover:bg-blue-500'>
+                                    <span className='text-3xl hover:text-blue-400'>{category.icon}</span>
+                                    <p className='text-xl text-center hover:text-white text-gray-800'>{category.name}</p>
+                                </div>
                             </div>
-                        </div>
-                    </div></Link>))
+                        </div></Link>))
                 }
             </div>
         </div>

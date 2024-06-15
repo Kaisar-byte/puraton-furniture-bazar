@@ -57,6 +57,8 @@ const Products = () => {
         }
 
     ]
+
+
     return (
         <div className="mt-20">
             <div className="w-full md:w-[600px] mx-auto text-center space-y-7">

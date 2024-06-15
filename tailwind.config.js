@@ -8,7 +8,12 @@ export default {
     extend: {},
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('@sira-ui/tailwind')]
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require('@sira-ui/tailwind'),
+    // eslint-disable-next-line no-undef
+    require('daisyui'),
+  ],
 }
 
 

@@ -21,7 +21,7 @@ const Slider = () => {
         },
     ]
     return (
-        <div className='bg-white z-10 '>
+        <div className='bg-white '>
             <AwesomeSlider animation="cubeAnimation">
                 {
                     sliders.map((slider, i) => <div key={i} className='flex flex-col md:flex-row justify-center items-center gap-0 md:gap-4 px-4 md:px-20'>
