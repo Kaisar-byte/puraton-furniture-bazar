@@ -30,21 +30,21 @@ const DashboardLayout = () => {
                             <p className='text-white text-lg'> {loggedUser?.clientType}</p>
                         </div>
                     {
-                        (loggedUser.clientType === "Seller") &&
+                        (loggedUser?.clientType === "Seller") &&
                         <nav className='flex flex-col gap-2 space-y-2 py-20'>
                             <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/seller/addproduct">Add Products</NavLink>
                             <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/seller/myproducts">My Products</NavLink>
                         </nav>
                     }
                     {
-                        (loggedUser.clientType === "Buyer") &&
+                        (loggedUser?.clientType === "Buyer") &&
                         <nav className='flex flex-col gap-4 py-10'>
 
                             <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/buyer/myorders">My Orders</NavLink>
                         </nav>
                     }
                     {
-                        (loggedUser.clientType === "Admin") &&
+                        (loggedUser?.clientType === "Admin") &&
                         <nav className='flex flex-col gap-4 py-10'>
                             <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/allbuyers">All Buyer</NavLink>
                             <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/allsellers">All Sellers</NavLink>

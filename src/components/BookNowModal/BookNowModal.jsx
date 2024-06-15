@@ -16,7 +16,7 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
         productName, productPrice, productCategory, productCondition, productDescription, productImgURL, email:user?.email,      
     }
        console.log(bookedProduct)
-       fetch("http://localhost:5000/order", {
+       fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/order", {
         method:"POST",
         headers:{
             "content-type":"application/json"

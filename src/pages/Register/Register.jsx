@@ -41,7 +41,7 @@ const Register = () => {
                             console.log(errMsg)
                         })
 
-                    fetch("http://localhost:5000/user", {
+                    fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/user", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -61,7 +61,7 @@ const Register = () => {
             })
     }
     const toggleUserType = () => {
-        setUserType(prevType => (prevType === "Seller" ? "Buyer" : "Buyer"));
+        setUserType(prevType => (prevType === "Buyer" ? "Seller" : "Buyer"));
         console.log(userType)
     };
 
@@ -79,7 +79,7 @@ const Register = () => {
                     photo: user?.photoURL,
                     clientType: "Buyer"
                 }
-                fetch("http://localhost:5000/user", {
+                fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/user", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
