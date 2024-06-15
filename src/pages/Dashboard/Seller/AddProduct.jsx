@@ -1,8 +1,11 @@
 import { format } from "date-fns";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 
 const AddProduct = () => {
+  const {user} = useContext(AuthContext)
   const postedAt = format(new Date(), 'yyyy MMM dd hh:mm aaa')
 
   console.log(postedAt)
@@ -21,11 +24,12 @@ const AddProduct = () => {
     const productImgURL = form.productImgURL.value;
     const postingTime = postedAt;
     const totalUsed = form.totalUsed.value;
+    const sellerEmail = user?.email
 
 
 
     const newProduct = {
-      productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName
+      productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName, sellerEmail
     }
 
     fetch("http://localhost:5000/addproduct", {
@@ -45,8 +49,8 @@ const AddProduct = () => {
   }
   return (
     <div className="flex my-6 justify-center items-center  ">
-      <div className=" w-full md:w-[60%]  mx-10 md:mx-auto bg-orange-100 border border-red-300/40 rounded-md">
-        <h2 className="text-2xl py-2 font-bold text-white bg-gray-400 text-center rounded-t-md">Add A Product</h2>
+      <div className=" w-full md:w-[60%]  mx-10 md:mx-auto  bg-[#875dc4] border border-red-300/40 rounded-md">
+        <h2 className="text-2xl py-2 font-bold text-white bg-[#400AA7] text-center rounded-t-md">Add Product</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-0 md:space-y-1 py-1 md:py-2 px-10 ">
             <label htmlFor="productName" className="text-sm md:text-xl ">Product Name</label>
@@ -112,9 +116,8 @@ const AddProduct = () => {
             <input type="text" name="productImgURL" placeholder="Enter your product image URL" className="pl-3 border py-2 w-full" />
           </div>
           <div className="flex justify-center items-center py-4 px-10 mb-6">
-            <input type="submit" value="Add Product" className="bg-sky-300 px-6 py-2 rounded-md hover:bg-sky-500 hover:text-white" />
+            <input type="submit" value="Add Product" className="bg-[#400AA7] text-white px-6 py-2 rounded-md hover:bg-sky-500 hover:text-white" />
           </div>
-
         </form>
       </div>
     </div>

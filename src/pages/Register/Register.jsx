@@ -61,7 +61,7 @@ const Register = () => {
             })
     }
     const toggleUserType = () => {
-        setUserType(prevType => (prevType === "Buyer" ? "Seller" : "Buyer"));
+        setUserType(prevType => (prevType === "Seller" ? "Buyer" : "Buyer"));
         console.log(userType)
     };
 

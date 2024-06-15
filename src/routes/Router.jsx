@@ -13,6 +13,9 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import AddProduct from "../pages/Dashboard/Seller/AddProduct";
 import SellerDashboard from "../pages/Dashboard/Seller/SellerDashboard";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
+import BuyerOrders from "../pages/Dashboard/Buyer/BuyerOrders";
+import BuyerDashboard from "../pages/Dashboard/Buyer/BuyerDashboard";
+import SellerProducts from "../pages/Dashboard/Seller/SellerProducts";
 
 
 
@@ -37,7 +40,9 @@ const router = createBrowserRouter([
             {
                 path: "/categories/:subCategory",
                 loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.subCategory}`),
-                element: <SubCategories />
+                element: <PrivateRoute>
+                    <SubCategories />
+                </PrivateRoute>
             }
         ]
     },
@@ -52,7 +57,9 @@ const router = createBrowserRouter([
 
     {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <PrivateRoute>
+            <DashboardLayout />
+        </PrivateRoute>,
         children: [
             {
                 path: "/dashboard",
@@ -64,12 +71,20 @@ const router = createBrowserRouter([
                 element: <SellerDashboard />
             },
             {
-                path: "/dashboard/addproduct",
+                path: "/dashboard/seller/addproduct",
                 element: <AddProduct />
             },
             {
+                path: "/dashboard/seller/myproducts",
+                element: <SellerProducts />
+            },
+            {
                 path: "/dashboard/buyer",
-                element: <SellerDashboard />
+                element: <BuyerDashboard />
+            },
+            {
+                path: "/dashboard/buyer/myorders",
+                element: <BuyerOrders />
             },
             {
                 path: "/dashboard/admin",

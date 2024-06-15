@@ -7,7 +7,7 @@ import { useState } from "react";
 const SubCategory = ({ category }) => {
     const [showModal, setShowModal] = useState(false)
 
-    const { productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed } = category
+    const { productName, productPrice, sellerContactNumber, sellerLocation, sellerName, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed } = category
     return (
         <div className='overflow-hidden rounded-lg has-shadow w-80 h-[450px]'>
             <div className="">
@@ -33,7 +33,7 @@ const SubCategory = ({ category }) => {
                         <h2>Sellers:</h2>
                         <div className="flex gap-2 justify-start items-center">
                             <span><IoMan /></span>
-                            <p className="text-sm">Jashim Uddin</p>
+                            <p className="text-sm">{sellerName ? sellerName : "Unnamed"}</p>
                         </div>
                         <div className="flex gap-2 justify-start items-center">
                             <span><IoCallOutline /></span>

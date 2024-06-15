@@ -44,19 +44,16 @@ const Navbar = () => {
                             to="/dashboard/admin">Dashboard</NavLink>
                     }
                     {
-                        (user) ? <>
-
-
+                        (user) ? 
+                        <>
                             <p className="mr-4 bg-gray-300 px-3 rounded-sm">{user.email}</p>
                             <NavLink className="mr-6 bg-blue-300 px-3 rounded-sm"
                                 onClick={handleLogOut}
                             >Logout</NavLink>
-
                         </>
                             :
-                            <>
                                 <NavLink className="mr-6" to="/login">Login</NavLink>
-                            </>
+
                     }
                 </nav>
             </div>

@@ -1,7 +1,8 @@
 
-import { useContext } from 'react'
+
 import { Link, NavLink, Outlet, } from 'react-router-dom'
 import useUser from '../hooks/useUser'
+import { CgProfile } from 'react-icons/cg'
 
 const DashboardLayout = () => {
     const [loggedUser] = useUser()
@@ -14,44 +15,44 @@ const DashboardLayout = () => {
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
-            <div className="drawer-side bg-blue-800/60">
+            <div className="drawer-side bg-[#400AA7]">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <nav className="menu p-4 w-80 min-h-full text-base-content">
-                    <div className='bg-sky-400 p-4 rounded-md flex justify-center items-center gap-6'>
-                        <div className="avatar ">
-                            <div className="w-32 rounded-full">
-                                <img src={loggedUser?.photoURL} />
-                            </div>
-                        </div>
+                    <div className='p-4 rounded-md flex justify-center items-center gap-6'>
                         <div>
-                            <h2 className='text-md text-white font-semibold'>{loggedUser?.userName}</h2>
-                            <p className='text-white'>Client Status: {loggedUser?.clientType}</p>
+                            {
+                                loggedUser?.photoURL ? <img src={loggedUser?.photo} /> : <CgProfile className='text-7xl text-white'/>                                
+                            }
                         </div>
                     </div>
+                    <div className='text-center'>
+                            <h2 className='text-2xl text-white font-bold'>{loggedUser?.userName}</h2>
+                            <p className='text-white text-lg'> {loggedUser?.clientType}</p>
+                        </div>
                     {
                         (loggedUser.clientType === "Seller") &&
-                        <nav className='flex flex-col gap-4 py-10'>
-                            <NavLink className="text-lg  border hover:bg-green-500/50 py-4 font-semibold pl-6" to="/dashboard/addproduct">Add Products</NavLink>
-                            <NavLink className="text-lg  border hover:bg-green-500/50 py-4 font-semibold pl-6" to="/dashboard/addproduct">My Products</NavLink>
+                        <nav className='flex flex-col gap-2 space-y-2 py-20'>
+                            <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/seller/addproduct">Add Products</NavLink>
+                            <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/seller/myproducts">My Products</NavLink>
                         </nav>
                     }
                     {
                         (loggedUser.clientType === "Buyer") &&
                         <nav className='flex flex-col gap-4 py-10'>
 
-                            <NavLink className="text-lg  border hover:bg-green-500/50 py-4 font-semibold pl-6" to="/dashboard/myorders">My Orders</NavLink>
+                            <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/buyer/myorders">My Orders</NavLink>
                         </nav>
                     }
                     {
                         (loggedUser.clientType === "Admin") &&
                         <nav className='flex flex-col gap-4 py-10'>
-                            <NavLink className="text-lg  border hover:bg-green-500/50 py-4 font-semibold pl-6" to="/dashboard/allbuyers">All Buyer</NavLink>
-                            <NavLink className="text-lg  border hover:bg-green-500/50 py-4 font-semibold pl-6" to="/dashboard/allsellers">All Sellers</NavLink>
+                            <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/allbuyers">All Buyer</NavLink>
+                            <NavLink className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6" to="/dashboard/allsellers">All Sellers</NavLink>
                         </nav>
                     }
 
 
-                    <Link to="/" className="border py-5 text-center text-lg text-white">Home</Link>
+                    <Link to="/" className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6">Home</Link>
                 </nav>
 
             </div>

@@ -3,12 +3,12 @@ import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import useUser from '../hooks/useUser'
 
-const SellerRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const [loggedUser, loggedUserLoading] = useUser()
   if (loggedUserLoading) {
     return <div>loading</div>
   }
-  if (loggedUser.clientType === "Seller") {
+  if (loggedUser.clientType === "Admin") {
     return children
   }
   else {
@@ -27,4 +27,4 @@ const SellerRoute = ({ children }) => {
   return <Navigate to="/" replace />
 }
 
-export default SellerRoute
+export default AdminRoute

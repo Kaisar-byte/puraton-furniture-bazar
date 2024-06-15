@@ -4,10 +4,12 @@ import { FaGoogle, FaTwitter } from "react-icons/fa";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom"
+import useUser from "../../hooks/useUser";
 
 
 
 const Login = () => {
+    const [loggedUser] = useUser()
     const [error, setError] = useState(false)
     const { Login, googleSignIn, setLoading } = useContext(AuthContext)
     const navigate = useNavigate()

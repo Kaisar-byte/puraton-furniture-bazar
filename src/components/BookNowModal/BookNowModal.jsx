@@ -3,11 +3,34 @@ import { AuthContext } from '../../Provider/AuthProvider/AuthProvider'
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { MdEmail } from 'react-icons/md';
 import { PiMapPinLineFill } from 'react-icons/pi';
+import Swal from 'sweetalert2';
 
 const BookNowModal = ({ isVisible, onClose, category }) => {
     const { productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName } = category
     const { user } = useContext(AuthContext)
     if (!isVisible) return null
+
+    const handleOrder = (e) =>{
+        e.preventDefault()
+       const bookedProduct = {
+        productName, productPrice, productCategory, productCondition, productDescription, productImgURL, email:user?.email,      
+    }
+       console.log(bookedProduct)
+       fetch("http://localhost:5000/order", {
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(bookedProduct)
+       })
+       .then(res=>res.json())
+       .then(data=>{
+        console.log(data)
+        if(data.acknowledged){
+            Swal.fire("Your ordered has been confirmed")
+        }
+       })
+    }
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center ' onClick={() => onClose()}>
             <div className='flex flex-col '>
@@ -43,9 +66,8 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
 
                         </div>
                     </div>
-                    <button className='btn solid success w-full'>
-                        Submit
-                    </button>
+                    <input type='submit' className='btn solid success w-full' onClick={handleOrder} value="Order Now"/>
+                      
                 </div>
 
             </div>
