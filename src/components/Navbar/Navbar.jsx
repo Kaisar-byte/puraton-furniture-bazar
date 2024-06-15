@@ -31,9 +31,6 @@ const Navbar = () => {
                     <NavLink className="mr-6">About</NavLink>
                     <NavLink className="mr-6">Contact</NavLink>
                     <NavLink className="mr-6" to="/blogs">Blogs</NavLink>
-                    <NavLink className="mr-6" to="/addproduct">Add a Product</NavLink>
-                    <NavLink className="mr-6" to="/myproduct">My Product</NavLink>
-                    <NavLink className="mr-6" to="/myorders">My Orders</NavLink>
                     {
                         (loggedUser.clientType === "Buyer") && <NavLink className="mr-6 rounded-sm"
                             to="/dashboard/buyer">Dashboard</NavLink>

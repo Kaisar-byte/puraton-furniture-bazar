@@ -11,6 +11,8 @@ import SubCategories from "../components/Categories/SubCategories";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AddProduct from "../pages/Dashboard/Seller/AddProduct";
+import SellerDashboard from "../pages/Dashboard/Seller/SellerDashboard";
+import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
 
 
 
@@ -59,11 +61,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/seller",
-                element: <Seller />
+                element: <SellerDashboard />
             },
             {
                 path: "/dashboard/addproduct",
                 element: <AddProduct />
+            },
+            {
+                path: "/dashboard/buyer",
+                element: <SellerDashboard />
+            },
+            {
+                path: "/dashboard/admin",
+                element: <AdminDashboard />
             },
 
         ]
