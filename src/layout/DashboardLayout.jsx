@@ -5,8 +5,8 @@ import useUser from '../hooks/useUser'
 import { CgProfile } from 'react-icons/cg'
 
 const DashboardLayout = () => {
-    const {loggedUser} = useUser()
-    console.log(loggedUser)
+    const [loggedUser] = useUser()
+    console.log({ loggedUser })
 
     return (
         <div className="drawer lg:drawer-open">
@@ -22,13 +22,13 @@ const DashboardLayout = () => {
                     <div className='p-4 rounded-md flex justify-center items-center gap-6'>
                         <div>
                             {
-                                loggedUser?.photoURL ? <img src={loggedUser?.photo} /> : <CgProfile className='text-7xl text-white'/>                                
+                                loggedUser?.photoURL ? <img src={loggedUser?.photo} /> : <CgProfile className='text-7xl text-white' />
                             }
                         </div>
                     </div>
                     <div className='text-center'>
-                            <h2 className='text-2xl text-white font-bold'>{loggedUser?.userName}</h2>
-                            <p className='text-white text-lg'> {loggedUser?.clientType}</p>
+                        <h2 className='text-2xl text-white font-bold '>{loggedUser ? loggedUser?.userName : "No Name Found"}</h2>
+                        <p className='text-white text-lg'> {loggedUser?.clientType}</p>
                     </div>
                     {
                         (loggedUser?.clientType === "Seller") &&

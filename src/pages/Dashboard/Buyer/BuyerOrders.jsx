@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+
 
 const BuyerOrders = () => {
 
@@ -33,7 +32,7 @@ const BuyerOrders = () => {
           <tbody>
             {/* row 1 */}
             {
-              myorders.map((order, i) => <tr key={i}>
+              myorders?.map((order, i) => <tr key={i}>
                 <th>
                   <label>
                     <input type="checkbox" className="checkbox" />

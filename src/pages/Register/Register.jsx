@@ -118,14 +118,14 @@ const Register = () => {
                                         <button
                                             type="button"
                                             onClick={toggleUserType}
-                                            className={`px-4 py-2 rounded-md cursor-pointer rounded-r-none ${userType === "Seller" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
+                                            className={`px-4 py-2 rounded-md cursor-pointer rounded-r-none ${userType === "Buyer" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
                                         >
                                             Buyer
                                         </button>
                                         <button
                                             type="button"
                                             onClick={toggleUserType}
-                                            className={`px-4 py-2 rounded-md rounded-l-none cursor-pointer ${userType === "Buyer" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
+                                            className={`px-4 py-2 rounded-md rounded-l-none cursor-pointer ${userType === "Seller" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
                                         >
                                             Seller
                                         </button>
