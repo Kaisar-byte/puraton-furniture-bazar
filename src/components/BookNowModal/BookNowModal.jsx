@@ -10,26 +10,26 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
     const { user } = useContext(AuthContext)
     if (!isVisible) return null
 
-    const handleOrder = (e) =>{
+    const handleOrder = (e) => {
         e.preventDefault()
-       const bookedProduct = {
-        productName, productPrice, productCategory, productCondition, productDescription, productImgURL, email:user?.email,      
-    }
-       console.log(bookedProduct)
-       fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/order", {
-        method:"POST",
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify(bookedProduct)
-       })
-       .then(res=>res.json())
-       .then(data=>{
-        console.log(data)
-        if(data.acknowledged){
-            Swal.fire("Your ordered has been confirmed")
+        const bookedProduct = {
+            productName, productPrice, productCategory, productCondition, productDescription, productImgURL, email: user?.email,
         }
-       })
+        console.log(bookedProduct)
+        fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/order", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(bookedProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    Swal.fire("Your ordered has been confirmed")
+                }
+            })
     }
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center ' onClick={() => onClose()}>
@@ -66,8 +66,8 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
 
                         </div>
                     </div>
-                    <input type='submit' className='btn solid success w-full' onClick={handleOrder} value="Order Now"/>
-                      
+                    <input type='submit' className='btn solid success w-full' onClick={handleOrder} value="Order Now" />
+
                 </div>
 
             </div>

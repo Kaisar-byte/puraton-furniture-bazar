@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 
 
 const AddProduct = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const postedAt = format(new Date(), 'yyyy MMM dd hh:mm aaa')
 
   console.log(postedAt)
