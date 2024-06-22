@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom"
 import useUser from "../../hooks/useUser";
+import axios from "axios";
 
 
 
@@ -22,13 +23,19 @@ const Login = () => {
         const password = form.password.value;
         Login(email, password)
             .then((result) => {
-                const user = result.user;
+                const loggedUser = result.user;
                 setLoading(false)
-                if (user?.uid) {
-                    navigate(from, { replace: true })
-                    console.log(user)
+                const user = { email }
+                if (loggedUser?.uid) {
+                    // navigate(from, { replace: true })
+                    // access token
+                    axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+                        .then(res => {
+                            if (res.data.success) {
+                                navigate(from, { replace: true })
+                            }
+                        })
                 }
-
             })
             .catch(err => {
                 const errMsg = err.message;

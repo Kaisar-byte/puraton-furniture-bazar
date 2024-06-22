@@ -2,13 +2,17 @@
 import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import useUser from '../hooks/useUser'
+import { useContext } from 'react'
+import { AuthContext } from '../Provider/AuthProvider/AuthProvider'
+import Loading from '../components/Loading/Loading'
 
 const AdminRoute = ({ children }) => {
+  const { loading } = useContext(AuthContext)
   const [loggedUser, loggedUserLoading] = useUser()
-  if (loggedUserLoading) {
-    return <div>loading</div>
+  if (loading && loggedUserLoading) {
+    return <Loading />
   }
-  if (loggedUser.clientType === "Admin") {
+  if (loggedUser.clientType === "admin") {
     return children
   }
   else {

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify';
 
 const Register = () => {
-    const [userType, setUserType] = useState("Buyer");
+    const [userType, setUserType] = useState("buyer");
     const { register, UpdatedProfile, googleSignIn } = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -41,7 +41,7 @@ const Register = () => {
                             console.log(errMsg)
                         })
 
-                    fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/user", {
+                    fetch("http://localhost:5000/user", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -61,7 +61,7 @@ const Register = () => {
             })
     }
     const toggleUserType = () => {
-        setUserType(prevType => (prevType === "Buyer" ? "Seller" : "Buyer"));
+        setUserType(prevType => (prevType === "buyer" ? "seller" : "buyer"));
         console.log(userType)
     };
 
@@ -77,9 +77,9 @@ const Register = () => {
                     userName: user?.displayName,
                     email: user?.email,
                     photo: user?.photoURL,
-                    clientType: "Buyer"
+                    clientType: "buyer"
                 }
-                fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/user", {
+                fetch("http://localhost:5000/user", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -118,14 +118,14 @@ const Register = () => {
                                         <button
                                             type="button"
                                             onClick={toggleUserType}
-                                            className={`px-4 py-2 rounded-md cursor-pointer rounded-r-none ${userType === "Buyer" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
+                                            className={`px-4 py-2 rounded-md cursor-pointer rounded-r-none ${userType === "buyer" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
                                         >
                                             Buyer
                                         </button>
                                         <button
                                             type="button"
                                             onClick={toggleUserType}
-                                            className={`px-4 py-2 rounded-md rounded-l-none cursor-pointer ${userType === "Seller" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
+                                            className={`px-4 py-2 rounded-md rounded-l-none cursor-pointer ${userType === "seller" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"}`}
                                         >
                                             Seller
                                         </button>

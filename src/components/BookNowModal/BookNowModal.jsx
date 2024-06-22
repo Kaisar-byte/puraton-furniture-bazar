@@ -4,8 +4,11 @@ import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { MdEmail } from 'react-icons/md';
 import { PiMapPinLineFill } from 'react-icons/pi';
 import Swal from 'sweetalert2';
+import useUser from '../../hooks/useUser';
 
 const BookNowModal = ({ isVisible, onClose, category }) => {
+    const [loggedUser] = useUser()
+
     const { productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName } = category
     const { user } = useContext(AuthContext)
     if (!isVisible) return null
@@ -16,7 +19,7 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
             productName, productPrice, productCategory, productCondition, productDescription, productImgURL, email: user?.email,
         }
         console.log(bookedProduct)
-        fetch("https://puraton-furniture-bazar-server-git-main-kaisarbytes-projects.vercel.app/order", {
+        fetch("http://localhost:5000/order", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -66,7 +69,7 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
 
                         </div>
                     </div>
-                    <input type='submit' className='btn solid success w-full' onClick={handleOrder} value="Order Now" />
+                    <input type='submit' className='btn solid success w-full' disabled={loggedUser?.clientType === "seller" && true} onClick={handleOrder} value="Order Now" />
 
                 </div>
 

@@ -8,9 +8,8 @@ import useUser from "../../hooks/useUser";
 const Navbar = () => {
     const { user, LogOut } = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false);
-    const [loggedUser] = useUser();
+    const [loggedUser, loading] = useUser();
 
-    console.log({ loggedUser })
     const handleLogOut = () => {
         LogOut()
             .then(() => { })
@@ -32,29 +31,32 @@ const Navbar = () => {
                     <NavLink className="mr-6">Contact</NavLink>
                     <NavLink className="mr-6" to="/blogs">Blogs</NavLink>
                     {
-                        (loggedUser.clientType === "Buyer") && <NavLink className="mr-6 rounded-sm"
+                        (loggedUser?.clientType === "buyer") && <NavLink className="mr-6 rounded-sm"
                             to="/dashboard/buyer">Dashboard</NavLink>
                     }
                     {
-                        (loggedUser.clientType === "Seller") && <NavLink className="mr-6 rounded-sm"
+                        (loggedUser?.clientType === "seller") && <NavLink className="mr-6 rounded-sm"
                             to="/dashboard/seller">Dashboard</NavLink>
                     }
                     {
-                        (loggedUser.clientType === "Admin") && <NavLink className="mr-6 rounded-sm"
+                        (loggedUser?.clientType === "admin") && <NavLink className="mr-6 rounded-sm"
                             to="/dashboard/admin">Dashboard</NavLink>
                     }
                     {
-                        (user) ? 
-                        <>
-                            <p className="mr-4 bg-gray-300 px-3 rounded-sm">{user.email}</p>
-                            <NavLink className="mr-6 bg-blue-300 px-3 rounded-sm"
-                                onClick={handleLogOut}
-                            >Logout</NavLink>
-                        </>
+                        (user) ?
+                            <>
+                                <p className="mr-4 bg-gray-300 px-3 rounded-sm">{user.email}</p>
+                                <NavLink className="mr-6 bg-blue-300 px-3 rounded-sm"
+                                    onClick={handleLogOut}
+                                >Logout</NavLink>
+                            </>
                             :
-                                <NavLink className="mr-6" to="/login">Login</NavLink>
+                            <NavLink className="mr-6" to="/login">Login</NavLink>
 
                     }
+                    {/* {
+                        loading && <div>Loading</div>
+                    } */}
                 </nav>
             </div>
         </div>
