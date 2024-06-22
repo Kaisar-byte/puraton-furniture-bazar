@@ -7,7 +7,7 @@ const BuyerOrders = () => {
   const { data: myorders, isFetching } = useQuery({
     queryKey: ['myorders'],
     queryFn: () => axios
-      .get("http://localhost:5000/orders")
+      .get("https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/orders")
       .then(res => res.data)
   })
   return (

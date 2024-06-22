@@ -8,11 +8,11 @@ const useUser = () => {
     const { data: loggedUser = [], isPending, isLoading: loggedUserLoading, refetch: loggedUserRefetch } = useQuery({
         queryKey: ['users', user?.email],
         enabled: !loading,
-        // queryFn: () => fetch(`http://localhost:5000/users/${user?.email}`, { credentials: "include" })
+        // queryFn: () => fetch(`https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/users/${user?.email}`, { credentials: "include" })
         //     .then(res => res.json())
         //     .then(data => data)
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/users/${user?.email}`, { withCredentials: true })
+            const { data } = await axios.get(`https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/users/${user?.email}`, { withCredentials: true })
             return data
         }
     })

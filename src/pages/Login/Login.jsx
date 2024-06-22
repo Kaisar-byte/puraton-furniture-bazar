@@ -29,7 +29,7 @@ const Login = () => {
                 if (loggedUser?.uid) {
                     // navigate(from, { replace: true })
                     // access token
-                    axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
+                    axios.post("https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/jwt", user, { withCredentials: true })
                         .then(res => {
                             if (res.data.success) {
                                 navigate(from, { replace: true })
