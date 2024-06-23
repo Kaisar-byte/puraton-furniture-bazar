@@ -3,8 +3,10 @@ import { IoMan } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import BookNowModal from "../BookNowModal/BookNowModal";
 import { useState } from "react";
+import useUser from "../../hooks/useUser";
 
 const SubCategory = ({ category }) => {
+    const { loggedUser } = useUser()
     const [showModal, setShowModal] = useState(false)
 
     const { productName, productPrice, sellerContactNumber, sellerLocation, sellerName, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed } = category
@@ -51,7 +53,7 @@ const SubCategory = ({ category }) => {
                             {sellerLocation}
                         </span>
                     </div>
-                    <button className='btn solid success w-full mt-4' onClick={() => setShowModal(true)}>
+                    <button className='btn solid success w-full mt-4' onClick={() => setShowModal(true)} disabled={loggedUser?.clientType === "seller" && true} >
                         Book Now
                     </button>
                     <BookNowModal category={category} isVisible={showModal} onClose={() => setShowModal(false)} />

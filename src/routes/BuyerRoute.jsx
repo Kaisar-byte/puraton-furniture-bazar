@@ -2,12 +2,18 @@
 import { Navigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import useUser from '../hooks/useUser'
+import Loading from '../components/Loading/Loading'
+import { useContext } from 'react'
+import { AuthContext } from '../Provider/AuthProvider/AuthProvider'
 
 const BuyerRoute = ({ children }) => {
+  const { loading } = useContext(AuthContext)
   const [loggedUser, loggedUserLoading] = useUser()
-  if (loggedUserLoading) {
-    return <div>loading</div>
+
+  if (loading && loggedUserLoading) {
+    return <Loading />
   }
+
   if (loggedUser.clientType === "Buyer") {
     return children
   }
