@@ -32,7 +32,7 @@ const AddProduct = () => {
       productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName, sellerEmail
     }
 
-    fetch("https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/addproduct", {
+    fetch("https://puraton-furniture-bazar-server.vercel.app/addproduct", {
       method: 'POST',
       headers: {
         "content-type": "application/json"

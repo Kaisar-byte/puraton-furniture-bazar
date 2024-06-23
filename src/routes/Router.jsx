@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/categories/:subCategory",
-                loader: ({ params }) => fetch(`https://puraton-furniture-bazar-server-f1g1fhye5-kaisarbytes-projects.vercel.app/categories/${params.subCategory}`, { credentials: "include" }),
+                loader: ({ params }) => fetch(`https://puraton-furniture-bazar-server.vercel.app/categories/${params.subCategory}`, { credentials: "include" }),
                 element: <PrivateRoute>
                     <SubCategories />
                 </PrivateRoute>
