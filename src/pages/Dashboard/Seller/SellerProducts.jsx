@@ -18,7 +18,7 @@ const SellerProducts = () => {
   const { data: sellerProducts, isPending, refetch, isLoading } = useQuery({
     queryKey: ['sellerProducts'],
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:5000/products/${userEmail}`, { withCredentials: true })
+      const { data } = await axios.get(`https://puraton-furniture-bazar-server.vercel.app/products/${userEmail}`, { withCredentials: true })
       return data;
     }
 
@@ -40,7 +40,7 @@ const SellerProducts = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/products/${id}`)
+        axios.delete(`https://puraton-furniture-bazar-server.vercel.app/products/${id}`)
           .then(res => {
             if (res.data.deletedCount > 0) {
               Swal.fire(

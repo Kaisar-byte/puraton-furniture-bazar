@@ -10,7 +10,7 @@ const useUser = () => {
         enabled: !loading,
 
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/users/${user?.email}`, { withCredentials: true })
+            const { data } = await axios.get(`https://puraton-furniture-bazar-server.vercel.app/users/${user?.email}`, { withCredentials: true })
             return data
         }
     })

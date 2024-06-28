@@ -15,7 +15,7 @@ const BuyerOrders = () => {
   const { data: orders, isLoading } = useQuery({
     queryKey: ['myOrders'],
     queryFn: async () => {
-      const { data } = await axios.get(`http://localhost:5000/order/${userEmail}`, { withCredentials: true })
+      const { data } = await axios.get(`https://puraton-furniture-bazar-server.vercel.app/order/${userEmail}`, { withCredentials: true })
       console.log(data);
       return data;
     }

@@ -7,7 +7,7 @@ const AllBuyer = () => {
     const [data, setData] = useState([])
     const { loading } = useContext(AuthContext)
     useEffect(() => {
-        axios.get(`http://localhost:5000/users`, { withCredentials: true })
+        axios.get(`https://puraton-furniture-bazar-server.vercel.app/users`, { withCredentials: true })
             .then(res => {
                 setData(res.data);
             })

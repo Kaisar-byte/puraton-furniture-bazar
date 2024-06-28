@@ -43,7 +43,7 @@ const AddProduct = () => {
 
 
     if (productName && productPrice && sellerContactNumber && sellerLocation && productCategory && productCondition && productBuyingPrice && productDescription && productImgURL && postingTime && totalUsed && sellerName && sellerEmail && clientType) {
-      axios.post(`http://localhost:5000/product`, newProduct, { withCredentials: true })
+      axios.post(`https://puraton-furniture-bazar-server.vercel.app/product`, newProduct, { withCredentials: true })
         .then(res => {
           console.log({ res });
           if (res.data.insertedId) {
@@ -60,7 +60,7 @@ const AddProduct = () => {
     } else {
       Swal.error("Failed to add product");
     }
-    //   fetch("http://localhost:5000/addproduct", {
+    //   fetch("https://puraton-furniture-bazar-server.vercel.app/addproduct", {
     //     method: 'POST',
     //     headers: {
     //       "content-type": "application/json"

@@ -49,12 +49,12 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
             // if user exist then issue a token
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                axios.post('https://puraton-furniture-bazar-server.vercel.app/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log("Response from token", res.data)
                     })
             } else {
-                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
+                axios.post('https://puraton-furniture-bazar-server.vercel.app/logout', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })

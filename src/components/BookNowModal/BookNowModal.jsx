@@ -27,7 +27,7 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
         console.log(bookedProduct)
 
         if (loggedUser?.clientType === "buyer") {
-            axios.post(`http://localhost:5000/order`, bookedProduct, { withCredentials: true })
+            axios.post(`https://puraton-furniture-bazar-server.vercel.app/order`, bookedProduct, { withCredentials: true })
                 .then(res => {
                     console.log(res.data);
                     if (res.data.acknowledged) {
@@ -41,7 +41,7 @@ const BookNowModal = ({ isVisible, onClose, category }) => {
         } else {
             Swal.fire("You are not a buyer so cann't place a order")
         }
-        // fetch("http://localhost:5000/order", {
+        // fetch("https://puraton-furniture-bazar-server.vercel.app/order", {
         //     method: "POST",
         //     headers: {
         //         "content-type": "application/json"
