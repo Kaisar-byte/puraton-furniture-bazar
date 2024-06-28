@@ -1,20 +1,29 @@
 import { format } from "date-fns";
 import { useContext } from "react";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import useUser from "../../../hooks/useUser";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAlert from "../../../hooks/useAlert";
+import Loading from "../../../components/Loading/Loading";
 
 
 const AddProduct = () => {
-  const { user } = useContext(AuthContext)
-  const postedAt = format(new Date(), 'yyyy MMM dd hh:mm aaa')
 
-  console.log(postedAt)
+  const { user, loading } = useContext(AuthContext)
+  const [loggedUser, loggedUserLoading] = useUser()
+  const navigate = useNavigate()
+  const postedAt = format(new Date(), 'yyyy MMM dd hh:mm aaa')
+  if (loading && loggedUserLoading) {
+    return <Loading />
+  }
   const handleSubmit = e => {
     e.preventDefault()
     const form = e.target;
     const productName = form.productName.value;
     const productPrice = form.productPrice.value;
-    const sellerName = form.sellerName.value;
+    const sellerName = form.sellerName.value || loggedUser?.userName;
     const sellerContactNumber = form.sellerContactNumber.value;
     const sellerLocation = form.sellerLocation.value;
     const productCategory = form.productCategory.value;
@@ -24,32 +33,51 @@ const AddProduct = () => {
     const productImgURL = form.productImgURL.value;
     const postingTime = postedAt;
     const totalUsed = form.totalUsed.value;
-    const sellerEmail = user?.email
-
+    const sellerEmail = user?.email || loggedUser?.email;
+    const clientType = loggedUser?.clientType
 
 
     const newProduct = {
-      productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName, sellerEmail
+      productName, productPrice, sellerContactNumber, sellerLocation, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed, sellerName, sellerEmail, clientType
     }
 
-    fetch("https://puraton-furniture-bazar-server.vercel.app/addproduct", {
-      method: 'POST',
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(newProduct)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          Swal.fire("New furniture added successfully");
-          form.reset()
-        }
-      })
+
+    if (productName && productPrice && sellerContactNumber && sellerLocation && productCategory && productCondition && productBuyingPrice && productDescription && productImgURL && postingTime && totalUsed && sellerName && sellerEmail && clientType) {
+      axios.post(`http://localhost:5000/product`, newProduct, { withCredentials: true })
+        .then(res => {
+          console.log({ res });
+          if (res.data.insertedId) {
+            Swal.fire({
+              title: 'Success',
+              text: 'New product added successfully',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+            form.reset()
+            navigate("/dashboard/seller/myproducts")
+          }
+        })
+    } else {
+      Swal.error("Failed to add product");
+    }
+    //   fetch("http://localhost:5000/addproduct", {
+    //     method: 'POST',
+    //     headers: {
+    //       "content-type": "application/json"
+    //     },
+    //     body: JSON.stringify(newProduct)
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       if (data.insertedId) {
+    //         Swal.fire("New furniture added successfully");
+    //         form.reset()
+    //       }
+    //     })
   }
   return (
     <div className="flex my-6 justify-center items-center  ">
-      <div className=" w-full md:w-[60%]  mx-10 md:mx-auto  bg-[#875dc4] border border-red-300/40 rounded-md">
+      <div className=" w-full md:w-[60%]  mx-10 md:mx-auto  bg-[#8059c9] border border-red-300/40 rounded-md">
         <h2 className="text-2xl py-2 font-bold text-white bg-[#400AA7] text-center rounded-t-md">Add Product</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-0 md:space-y-1 py-1 md:py-2 px-10 ">

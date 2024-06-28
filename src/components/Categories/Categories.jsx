@@ -36,6 +36,7 @@ const Categories = () => {
     return (
 
         <div className="mx-10">
+            <h2 className="text-4xl uppercase font-semibold text-center pb-10">Choose what you need</h2>
             <div className="flex flex-wrap justify-center items-center gap-6">
                 {
                     furnitureByCategories.map((category, i) => (<Link key={i} to={`/categories/${category.name}`}>

@@ -61,9 +61,9 @@ const Products = () => {
 
     return (
         <div className="mt-20">
-            <div className="w-full md:w-[600px] mx-auto text-center space-y-7">
-                <h2 className="text-xl md:text-4xl font-semibold">Our Products</h2>
-                <p className="text-sm md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis similique placeat ipsam accusamus adipisci architecto veritatis laudantium voluptatum, sint tenetur sequi sed ipsa labore dicta provident vero. A, dolorum illum!</p>
+            <div className="w-full md:w-[600px] mx-auto text-center space-y-7 mb-20">
+                <h2 className="text-xl md:text-4xl font-semibold uppercase py-6">Our Top Collections</h2>
+                <p className="text-sm md:text-lg">We have a varities of product and you can get your demand fullfil from our top products collections</p>
 
             </div>
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 mx-20 py-10 ">

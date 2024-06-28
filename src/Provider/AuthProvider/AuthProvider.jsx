@@ -5,8 +5,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import axios from "axios";
 
 
-export const AuthContext = createContext(null)
-
+export const AuthContext = createContext('')
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
 // eslint-disable-next-line react/prop-types
@@ -50,12 +49,12 @@ const AuthProvider = ({ children }) => {
             setLoading(false)
             // if user exist then issue a token
             if (currentUser) {
-                axios.post('https://puraton-furniture-bazar-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log("Response from token", res.data)
                     })
             } else {
-                axios.post('https://puraton-furniture-bazar-server.vercel.app/logout', loggedUser, { withCredentials: true })
+                axios.post('http://localhost:5000/logout', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data)
                     })
@@ -74,7 +73,7 @@ const AuthProvider = ({ children }) => {
         LogOut,
         googleSignIn,
         UpdatedProfile,
-        setLoading
+        setLoading, loading
     }
 
     return (

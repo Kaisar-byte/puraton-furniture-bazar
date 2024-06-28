@@ -9,7 +9,7 @@ import Blogs from "../pages/Blogs/Blogs";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import SubCategories from "../components/Categories/SubCategories";
 import DashboardLayout from "../layout/DashboardLayout";
-import Dashboard from "../pages/Dashboard/Dashboard";
+// import Dashboard from "../pages/Dashboard/Dashboard";
 import AddProduct from "../pages/Dashboard/Seller/AddProduct";
 import SellerDashboard from "../pages/Dashboard/Seller/SellerDashboard";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard";
@@ -32,16 +32,16 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/contact",
+                path: "contact",
                 element: <Contact />
             },
             {
-                path: "/blogs",
+                path: "blogs",
                 element: <Blogs />
             },
             {
-                path: "/categories/:subCategory",
-                loader: ({ params }) => fetch(`https://puraton-furniture-bazar-server.vercel.app/categories/${params.subCategory}`, { credentials: "include" }),
+                path: "categories/:subCategory",
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.subCategory}`, { credentials: "include" }),
                 element: <PrivateRoute>
                     <SubCategories />
                 </PrivateRoute>
@@ -49,25 +49,19 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: "/login",
+        path: "login",
         element: <Login />
     },
     {
-        path: "/register",
+        path: "register",
         element: <Register />
     },
-
     {
         path: "/dashboard",
         element: <PrivateRoute>
             <DashboardLayout />
         </PrivateRoute>,
         children: [
-            {
-                path: "/dashboard",
-                element: <Dashboard />
-
-            },
             {
                 path: "/dashboard/seller",
                 element: <SellerDashboard />

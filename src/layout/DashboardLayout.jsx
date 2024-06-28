@@ -1,19 +1,21 @@
-
-
 import { Link, NavLink, Outlet, } from 'react-router-dom'
 import useUser from '../hooks/useUser'
 import { CgProfile } from 'react-icons/cg'
+import { useContext } from 'react'
+import { AuthContext } from '../Provider/AuthProvider/AuthProvider'
+import Loading from '../components/Loading/Loading'
 
 const DashboardLayout = () => {
     const [loggedUser, loggedUserLoading,] = useUser()
-    if (loggedUserLoading) {
-        return <div>loading...</div>
+    const { loading } = useContext(AuthContext)
+    if (loading && loggedUserLoading) {
+        return <Loading />
     }
 
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center">
+            <div className="drawer-content flex flex-col items-center justify-center z-[1000]">
                 <Outlet />
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -55,7 +57,6 @@ const DashboardLayout = () => {
 
                     <Link to="/" className="text-lg text-[#936BE2] border hover:bg-[#736BE2] hover:border-white hover:text-white text-center rounded-md border-[#936BE2]  py-2 font-semibold pl-6">Home</Link>
                 </nav>
-
             </div>
         </div>
     )

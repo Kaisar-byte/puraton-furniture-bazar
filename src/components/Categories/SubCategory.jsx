@@ -6,12 +6,12 @@ import { useState } from "react";
 import useUser from "../../hooks/useUser";
 
 const SubCategory = ({ category }) => {
-    const { loggedUser } = useUser()
+    const [loggedUser] = useUser()
     const [showModal, setShowModal] = useState(false)
 
     const { productName, productPrice, sellerContactNumber, sellerLocation, sellerName, productCategory, productCondition, productBuyingPrice, productDescription, productImgURL, postingTime, totalUsed } = category
     return (
-        <div className='overflow-hidden rounded-lg has-shadow w-80 h-[450px]'>
+        <div className='overflow-hidden rounded-lg has-shadow w-82 h-[450px]'>
             <div className="">
                 <h3 className='text-xl font-semibold bg-sky-800/25 text-center py-1'>
                     {productName}
@@ -24,7 +24,7 @@ const SubCategory = ({ category }) => {
                 Posted On :  {postingTime ? postingTime : "No date found"}
 
             </div>
-            <div className="p-2">
+            <div className="px-2">
                 <div className="flex gap-2 justify-start items-center">
                     <h4 className="font-bold text-xl ">TK {productPrice}</h4>
                     <h4 className="text-xs line-through">({productBuyingPrice})</h4>
@@ -42,27 +42,31 @@ const SubCategory = ({ category }) => {
                             <p>{sellerContactNumber}</p>
                         </div>
                     </div>
-                    <div className='flex gap-2'>
-                        <span className='badge light info'>
+                    <div className='flex '>
+                        <span className='badge light info  text-sm'>
                             {totalUsed} used
                         </span>
-                        <span className='badge light primary'>
+                        <span className='badge light primary  text-sm'>
                             {productCondition}
                         </span>
-                        <span className='badge light warn'>
+                        <span className='badge light warn text-sm'>
                             {sellerLocation}
                         </span>
                     </div>
-                    <button className='btn solid success w-full mt-4' onClick={() => setShowModal(true)} disabled={loggedUser?.clientType === "seller" && true} >
-                        Book Now
-                    </button>
-                    <BookNowModal category={category} isVisible={showModal} onClose={() => setShowModal(false)} />
+                    {
+                        loggedUser?.clientType === "buyer" ? <button className="btn btn-success w-full mt-4 " onClick={() => setShowModal(true)}>Book Now</button> : <button className='btn solid success w-full mt-4 uppercase'>
+                            Only Buyer Can Place Order
+                        </button>
+
+
+                    }
+                    <BookNowModal category={category} isVisible={loggedUser?.clientType === "buyer" && showModal} onClose={() => setShowModal(false)} />
 
                 </div>
             </div>
 
 
-        </div>
+        </div >
     )
 }
 

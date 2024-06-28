@@ -8,7 +8,7 @@ import useUser from "../../hooks/useUser";
 const Navbar = () => {
     const { user, LogOut } = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false);
-    const [loggedUser, loading] = useUser();
+    const [loggedUser] = useUser();
 
     const handleLogOut = () => {
         LogOut()
@@ -21,6 +21,7 @@ const Navbar = () => {
             <div className="md:hidden py-2" onClick={() => setIsOpen(!isOpen)}>
                 {
                     isOpen ? <FaXmark /> : <GiHamburgerMenu />
+
                 }
             </div>
             <div className={`flex flex-col md:flex-row md:justify-between  items-start md:items-center duration-75 md:p-0 `}>
@@ -32,15 +33,15 @@ const Navbar = () => {
                     <NavLink className="mr-6" to="/blogs">Blogs</NavLink>
                     {
                         (loggedUser?.clientType === "buyer") && <NavLink className="mr-6 rounded-sm"
-                            to="/dashboard/buyer">Dashboard</NavLink>
+                            to="dashboard/buyer">Dashboard</NavLink>
                     }
                     {
                         (loggedUser?.clientType === "seller") && <NavLink className="mr-6 rounded-sm"
-                            to="/dashboard/seller">Dashboard</NavLink>
+                            to="dashboard/seller">Dashboard</NavLink>
                     }
                     {
                         (loggedUser?.clientType === "admin") && <NavLink className="mr-6 rounded-sm"
-                            to="/dashboard/admin">Dashboard</NavLink>
+                            to="dashboard/admin">Dashboard</NavLink>
                     }
                     {
                         (user) ?
@@ -51,12 +52,9 @@ const Navbar = () => {
                                 >Logout</NavLink>
                             </>
                             :
-                            <NavLink className="mr-6" to="/login">Login</NavLink>
+                            <NavLink className="mr-6" to="login">Login</NavLink>
 
                     }
-                    {/* {
-                        loading && <div>Loading</div>
-                    } */}
                 </nav>
             </div>
         </div>

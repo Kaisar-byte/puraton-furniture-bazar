@@ -41,7 +41,7 @@ const Register = () => {
                             console.log(errMsg)
                         })
 
-                    fetch("https://puraton-furniture-bazar-server.vercel.app/user", {
+                    fetch("http://localhost:5000/user", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -79,7 +79,7 @@ const Register = () => {
                     photo: user?.photoURL,
                     clientType: "buyer"
                 }
-                fetch("https://puraton-furniture-bazar-server.vercel.app/user", {
+                fetch("http://localhost:5000/user", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -140,7 +140,7 @@ const Register = () => {
                             </div>
 
                             <div className="flex justify-center">
-                                <input type="submit" className="bg-[#e0dbdb] hover:bg-gray-600 hover:text-white text-black px-5 py-2 " value="Submit" />
+                                <input type="submit" className="bg-[#bdb6b6] rounded-md hover:bg-gray-600 hover:text-white px-5 py-2" value="Register" />
                             </div>
                             <div>
                                 <p className="text-right">Already have an account? please <Link className="font-semibold" to="/login">login</Link></p>

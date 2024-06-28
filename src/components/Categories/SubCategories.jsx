@@ -6,7 +6,7 @@ const SubCategories = () => {
 
     return (
         <div>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 py-10">
+            <div className="flex flex-col flex-wrap md:flex-row justify-center items-center gap-6 py-10">
                 {
                     productsByCategories.length ?
                         <>
@@ -15,7 +15,9 @@ const SubCategories = () => {
                             }
                         </>
                         :
-                        <>Do data found for the category</>
+                        <>
+                            <p className="text-xl text-center text-orange-700">No data found for the category</p>
+                        </>
                 }
             </div>
         </div>

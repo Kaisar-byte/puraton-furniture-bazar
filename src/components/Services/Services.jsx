@@ -22,7 +22,11 @@ const Services = () => {
     ]
     return (
         <div className="py-10 shadow-sm">
-            <div className="flex flex-col md:flex-row justify-center items-center gap-10">
+            <div>
+                <h2 className="text-4xl uppercase text-center font-semibold mt-10 py-6">Our services</h2>
+                <p className="text-xl text-center">We are providing various services. Currently this three services are available now</p>
+            </div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-10 my-10">
                 {
                     services.map((service, i) => (<div className="flex flex-col justify-center items-center  px-10 space-y-2 py-10 rounded-md" key={i}>
 

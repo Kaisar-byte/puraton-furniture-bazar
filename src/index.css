@@ -9,3 +9,7 @@
 :root {
     background-color: white;
 }
+
+.swal2-container {
+    z-index: 10000;
+}

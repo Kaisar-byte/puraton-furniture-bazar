@@ -29,7 +29,7 @@ const Login = () => {
                 if (loggedUser?.uid) {
                     // navigate(from, { replace: true })
                     // access token
-                    axios.post("https://puraton-furniture-bazar-server.vercel.app/jwt", user, { withCredentials: true })
+                    axios.post("http://localhost:5000/jwt", user, { withCredentials: true })
                         .then(res => {
                             if (res.data.success) {
                                 navigate(from, { replace: true })
@@ -76,7 +76,7 @@ const Login = () => {
                                 <p className="text-right">Don't have an account? please <Link className="font-semibold" to="/register">register</Link></p>
                             </div>
                             <div className="flex justify-center">
-                                <input type="submit" value="Login" className="bg-[#E7E7E7] hover:bg-slate-400 hover:text-white text-black px-5 py-2" />
+                                <input type="submit" value="Login" className="bg-[#bdb6b6] rounded-md hover:bg-gray-600 hover:text-white px-5 py-2" />
                             </div>
                             <div className="divider">Or login using</div>
                             <div className="flex gap-6 justify-center items-center">
